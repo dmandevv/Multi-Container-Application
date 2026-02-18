@@ -11,7 +11,7 @@ mongoose.connect('mongodb://mongodb:27017/todoapp')
 
 app.get('/todos', async (req, res) => {
     const todos = await Todo.find();
-    res.json(todos);
+    res.json(todos).send("Here are your todos");
 });
 
 app.post('/todos', async (req, res) => {
