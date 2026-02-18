@@ -24,10 +24,6 @@ resource "digitalocean_droplet" "web" {
     ssh_keys = [digitalocean_ssh_key.my_key.id]
 }
 
-output "server_ip" {
-  value = digitalocean_droplet.web.ipv4_address
-}
-
 resource "local_file" "ansible_inventory" {
   content  = <<EOT
 [web_servers]

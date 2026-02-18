@@ -1,7 +1,6 @@
-version: '3.8'
 services:
   app:
-    build: .
+    image: dmandevv/todo-api:latest  # Use the image pushed to Docker Hub
     ports:
       - "3000:3000"
     environment:
