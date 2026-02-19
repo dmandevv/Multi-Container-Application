@@ -2,6 +2,8 @@
 
 A containerized Node.js Todo application using a **MERN-stack** architecture, featuring a reverse proxy and automated CI/CD integration.
 
+This is project from [Roadmap.sh](https://roadmap.sh/projects/multi-container-service) to practice using Docker Compose to run a multi-container application in production.
+
 ---
 
 ## 🚀 Architecture Overview
