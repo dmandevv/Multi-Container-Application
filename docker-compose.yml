@@ -10,8 +10,14 @@ services:
       - app
   app:
     image: dmandevv/todo-api:latest  # Use the image pushed to Docker Hub
+    volumes:
+      - .:/usr/src/app         # Link local folder to container folder
+      - /usr/src/app/node_modules  # <--- DO NOT REMOVE THIS. 
+                                   # This tells Docker to keep the internal 
+                                   # node_modules separate from your host.
     environment:
     - MONGO_URI=mongodb://mongodb:27017/todoapp
+    command: npm run dev # <--- This overrides the Dockerfile CMD
     depends_on:
       - mongodb
   mongodb:

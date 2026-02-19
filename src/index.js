@@ -4,6 +4,7 @@ const Todo = require('./models/todo');
 
 const app = express();
 app.use(express.json());
+app.set('trust proxy', true);
 
 mongoose.connect('mongodb://mongodb:27017/todoapp')
     .then(() => console.log('Connected to MongoDB'))
@@ -53,6 +54,14 @@ app.delete('/todos/:id', async (req, res) => {
     } catch (err) {
         res.status(500).send(err.message);
     }
+});
+
+app.get('/whoami', (req, res) => {
+    res.json({
+        ip: req.ip, // This should now be your real IP
+        headers: req.headers['x-forwarded-for'], // The raw header from Nginx
+        remoteAddress: req.socket.remoteAddress // This will likely be the Nginx internal IP
+    });
 });
 
 const PORT = process.env.PORT || 3000;
